@@ -27,7 +27,7 @@
 
                     @if(count($errors) > 0)
                         <ul>
-                            @foreach($error->all() as $e)
+                            @foreach($errors->all() as $e)
                                 <li>{{ $e }}</li>
                             @endforeach
                         </ul>
@@ -37,28 +37,28 @@
                     <div class="form-group row">
                         <label class="col-md-2">氏名</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="title" value="{{old('title') }}">
+                            <input type="text" class="form-control" name="name" value="{{old('title') }}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-md-2">性別</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="title" value="{{old('title') }}">
+                            <input type="text" class="form-control" name="gender" value="{{old('title') }}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-md-2">趣味</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
+                            <textarea class="form-control" name="hobby" rows="20">{{ old('body') }}</textarea>
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-md-2">自己紹介欄</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="20">{{ old('body') }}</textarea>
                         </div>
                     </div>
                     
