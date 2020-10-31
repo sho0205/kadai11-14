@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -56,7 +57,7 @@ class ProfileController extends Controller
     if(empty($profiles)){
      abort(404);
     }
-     return view('admin.profile.edit');
+    return view('admin.profile.edit',['profiles_form' => $profiles]);
  }
  
 //以下を追記 
@@ -76,7 +77,7 @@ class ProfileController extends Controller
     //該当するデータを上書きして保存する
     $profiles->fill($profiles_form)->save();
   
-     return redirect('admin/profile');
+    return redirect('admin/profile/');
  }
  
 //以下を追記

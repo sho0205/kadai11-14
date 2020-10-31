@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 //以下を追記することで、News Modelが扱えるようになる
 use App\News;
+
+//以下を追記
+use App\History;
+use Carbon\Carbon;
 
 class NewsController extends Controller{
 // 以下を追記
@@ -17,7 +22,7 @@ class NewsController extends Controller{
  public function create(Request $request){
   
 //以下を追記
-    //Varidationを行う
+   //Varidationを行う
     $this->validate($request, News::$rules);
     
     $news = new News;
@@ -61,23 +66,23 @@ class NewsController extends Controller{
 //以下を追記
  public function edit(Request $request){
   
-    //News Model からデータを取得する
+   //News Model からデータを取得する
     $news = News::find($request->id);
     if(empty($news)){
      abort(404);
     }
-    return view('admin.news.edit', ['news_form' => $news]);
+    return view('admin.news.edit',['news_form' => $news]);
  }   
  
  public function update(Request $request){
   
-    //Validationをかける
+   //Validationをかける
     $this->validate($request,News::$rules);
     
-    //News Modelからデータを取得する
+   //News Modelからデータを取得する
     $news = News::find($request->id);
     
-    //送信されてきたフォームデータを格納する
+   //送信されてきたフォームデータを格納する
     $news_form = $request->all();
     
     if ($request->remove == 'true') {
@@ -90,11 +95,19 @@ class NewsController extends Controller{
     }
         
     unset($news_form['_token']);
+    unset($news_form['image']);
+    unset($news_form['remove']);
     
-    //該当するデータを上書きして保存する
+   //該当するデータを上書きして保存する
     $news->fill($news_form)->save();
     
-    return redirect('admin/news');
+   //以下を追記
+    $histroy = new History;
+    $histroy ->news_id = $news->id;
+    $histroy ->edited_at = Carbon::now();
+    $histroy ->save();
+    
+    return redirect('admin/news/');
  }
     
 //以下を追記
