@@ -56,7 +56,7 @@
                     <div class="col-md-4 mx auto">
                         <h2>編集履歴</h2>
                         <ul class="list-group">
-                            @if($profiles_form->profilehistories != NULL)
+                            @if($profiles_form->profile_histories != NULL)
                                 @foreach($profiles_form->profilehistories as $profilehistory)
                                     <li class="list-group-item">{{ $profilehistory->edited_at }}</li>
                                 @endforeach
