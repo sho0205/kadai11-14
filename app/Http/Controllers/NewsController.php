@@ -9,9 +9,9 @@ use App\News;
 
 class NewsController extends Controller{
     public function index(Request $request){
-        $ports= News::all()->sortByDesc('updated_at');
+        $posts= News::all()->sortByDesc('updated_at');
         
-        if(count($ports) > 0){
+        if(count($posts) > 0){
             $headline = $posts->shift();
             
         }else{
