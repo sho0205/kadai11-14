@@ -13,7 +13,7 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('profile', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name'); //名前を保存するカラム
             $table->string('gender'); //性別を保存するカラム
@@ -31,6 +31,6 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('profile');
     }
 }

@@ -39,19 +39,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($posts as $profiles)
+                            @foreach($posts as $profile)
                                 <tr>
-                                    <th>{{ $profiles->id }}</th>
-                                    <td>{{ \Str::limit($profiles->name, 100) }}</td>
-                                    <td>{{ \Str::limit($profiles->gender, 10) }}</td>
-                                    <td>{{ \Str::limit($profiles->hobby, 200) }}</td>
-                                    <td>{{ \Str::limit($profiles->introduction, 200) }}</td>
+                                    <th>{{ $profile->id }}</th>
+                                    <td>{{ \Str::limit($profile->name, 100) }}</td>
+                                    <td>{{ \Str::limit($profile->gender, 10) }}</td>
+                                    <td>{{ \Str::limit($profile->hobby, 200) }}</td>
+                                    <td>{{ \Str::limit($profile->introduction, 200) }}</td>
                                     <td>
                                         <div>
-                                            <a href="{{ action('Admin\ProfileController@edit', ['id' => $profiles->id]) }}">編集</a>
+                                            <a href="{{ action('Admin\ProfileController@edit', ['id' => $profile->id]) }}">編集</a>
                                         </div>
                                         <div>
-                                            <a href="{{ action('Admin\ProfileController@delete', ['id' => $profiles->id]) }}">削除</a>
+                                            <a href="{{ action('Admin\ProfileController@delete', ['id' => $profile->id]) }}">削除</a>
                                         </div>
                                     </td>
                                 </tr>
